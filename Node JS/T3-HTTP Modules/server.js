@@ -7,6 +7,9 @@ const server = http.createServer((req, res) => {
 
     res.writeHead(400, { 'content-type': "text/html" })
     res.write("<h1>hello World!!!</h1>")
+    console.log(req.url);
+    console.log(req.method);
+
 
     res.end()
 })
