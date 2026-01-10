@@ -1,0 +1,12 @@
+{
+  "name": "t8-middleware-and-handlers",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --env-file=.env index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
