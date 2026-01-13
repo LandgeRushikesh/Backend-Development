@@ -47,6 +47,7 @@ ReadFile()
 const WriteFile = async () => {
     try {
         fs.writeFile('./test.txt', "Hello ....")
+        console.log("Text Written Successfully...");
     } catch (error) {
         console.log(error);
 
@@ -54,4 +55,18 @@ const WriteFile = async () => {
 }
 
 WriteFile()
+ReadFile()
+
+// AppendFile
+
+const AppendFile = async () => {
+    try {
+        await fs.appendFile('./test.txt', "\nThis is Appended Text...")
+        console.log("Text Appended Successfully...");
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+AppendFile()
 ReadFile()
