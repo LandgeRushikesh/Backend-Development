@@ -2,6 +2,7 @@
   "name": "t8-using-controller",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch --env-file=.env server.js"
@@ -11,6 +12,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "colors": "^1.4.0",
     "express": "^5.2.1"
   }
 }

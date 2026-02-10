@@ -1,10 +1,24 @@
 import express from 'express'
-
-const PORT = process.env.PORT
+import posts from "./routes/posts.routes.js"
+import errorHandler from './middleware/errorHandler.js'
+import notFound from './middleware/notFound.js'
+import logger from './middleware/logger.js'
 
 const app = express()
+const PORT = process.env.PORT
 
-app.listen(() => {
-    console.log(`Server Running on PORT ${PORT}`);
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
+// Logger middleware
+app.use(logger)
+
+app.use('/api/posts', posts)
+
+// Error handler
+app.use(notFound)
+app.use(errorHandler)
+
+app.listen(PORT, () => {
+    console.log(`Server running on PORT ${PORT}`);
 })
