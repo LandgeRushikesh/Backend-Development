@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema({
-    Name: {
+    name: {
         type: String,
         required: [true, "Please add this Name field"]
     },
@@ -9,7 +9,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, "Please add this email field"]
     },
-    Password: {
+    password: {
         type: String,
         required: [true, "Please add this password field"]
     },
