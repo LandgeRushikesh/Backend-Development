@@ -11,7 +11,7 @@ const protect = asyncHandler(async (req, res, next) => {
             // Get user form token
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
-            req.user = User.findById(decoded.id).select('-password')
+            req.user = await User.findById(decoded.id).select('-password')
             // here req is just a normal JS object so here we are adding new property called user to it and giving it some data
 
             next()

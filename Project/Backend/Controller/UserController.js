@@ -82,5 +82,12 @@ const GenerateJWT = (id) => {
 // @desc Register user
 // @route POST /api/users/me
 export const GetUser = asyncHandler(async (req, res) => {
-    res.status(200).json({ msg: "User" })
+
+    const { _id, email, name } = await User.findById(req.user.id)
+
+    res.status(200).json({
+        id: _id,
+        email,
+        name
+    })
 })
