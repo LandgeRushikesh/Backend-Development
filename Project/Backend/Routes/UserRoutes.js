@@ -1,5 +1,6 @@
 import express from 'express'
 import { GetUser, LoginUser, RegisterUser } from '../Controller/UserController.js'
+import protect from '../Middleware/AuthMiddleware.js'
 
 const router = express.Router()
 
@@ -10,6 +11,6 @@ router.post('/', RegisterUser)
 router.post('/login', LoginUser)
 
 // Get user
-router.get('/me', GetUser)
+router.get('/me', protect, GetUser)
 
 export default router

@@ -33,9 +33,10 @@ export const RegisterUser = asyncHandler(async (req, res) => {
 
     if (user) {
         res.status(200).json({
-            _id: user._id,
+            _id: user.id,//user.id sends a id in string form and user._id send as objectId
             name: user.name,
-            email: user.email
+            email: user.email,
+            jwtToken: GenerateJWT(user._id)
         })
     }
     else {
@@ -55,13 +56,14 @@ export const LoginUser = asyncHandler(async (req, res) => {
         throw new Error("Please add all fields")
     }
 
-    const user = User.findOne({ email })
+    const user = await User.findOne({ email })
 
     if (user && (await bcrypt.compare(password, user.password))) {
         res.status(200).json({
-            _id: user._id,
+            _id: user.id,//user.id sends a id in string form and user._id send as objectId
             name: user.name,
-            email: user.email
+            email: user.email,
+            jwtToken: GenerateJWT(user._id)
         })
     }
     else {
@@ -69,6 +71,13 @@ export const LoginUser = asyncHandler(async (req, res) => {
         throw new Error("Invalid Credentials")
     }
 })
+
+// Genrate JWT
+const GenerateJWT = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
+        expiresIn: '30d'
+    })
+}
 
 // @desc Register user
 // @route POST /api/users/me
