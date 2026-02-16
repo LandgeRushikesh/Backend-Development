@@ -5,7 +5,7 @@ import Register from "../Pages/Register";
 
 const AppRoutes = () => {
   return (
-    <div>
+    <div className="font-sans">
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />

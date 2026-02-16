@@ -9,6 +9,8 @@ import asyncHandler from "express-async-handler"
 export const RegisterUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body || {} //by adding empty object now destructuring won't fail as if body is not present it will be assigned {} object
 
+    console.log(req.body);
+
     // checking if all field are provided by the user
     if (!name || !email || !password) {
         res.status(400)
@@ -49,6 +51,7 @@ export const RegisterUser = asyncHandler(async (req, res) => {
 // @route POST /api/users/login
 export const LoginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body || {} //by adding empty object now destructuring won't fail as if body is not present it will be assigned {} object
+
 
     // checking if all field are provided by the user
     if (!email || !password) {
